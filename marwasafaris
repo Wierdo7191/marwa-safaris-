@@ -1,0 +1,258 @@
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+// Marwa Safaris Africa - Restored layout without external CSS import
+//
+// NOTE: The original error came from `import './index.css'` which is not present
+// in the sandbox. To fix that while keeping the original structure and styling
+// as close as possible, this file removes the missing import and uses
+// inline styles and reliable remote placeholder images so the preview runs
+// here and on systems where index.css is not available.
+
+function MarwaSafarisPreview() {
+  const packages = [
+    {
+      title: 'Classic Kenya Wildlife Safari',
+      desc: 'Maasai Mara game drives, Lake Nakuru flamingos, All meals & transfers',
+      img: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=60',
+    },
+    {
+      title: 'Gorilla Trekking in Uganda',
+      desc: 'Permits included, Guided treks, Luxury lodge',
+      img: 'https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1200&q=60',
+    },
+    {
+      title: 'Zanzibar Beach & Spice Tour',
+      desc: 'Beach villa, Stone Town guided tour, Spice farm visit',
+      img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60',
+    },
+    {
+      title: 'Mount Kilimanjaro Climb (Machame Route)',
+      desc: 'Professional guides, Full board, Scenic routes',
+      img: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60',
+    },
+    {
+      title: 'Luxury Conservation Lodge Experience',
+      desc: 'Private guides, Conservancy walks, Spa & fine dining',
+      img: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60',
+    },
+  ];
+
+  const brand = {
+    primary: '#7a1720', // maroon
+    accent: '#ffffff',
+    muted: '#6b6b6b',
+  };
+
+  const containerStyle = {
+    minHeight: '100vh',
+    background: 'linear-gradient(#ffffff, #f8fafc)',
+    color: '#1f2937',
+    fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial',
+  };
+
+  const headerStyle = {
+    backgroundColor: brand.primary,
+    color: brand.accent,
+    padding: '1rem 2rem',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.08)',
+    position: 'sticky',
+    top: 0,
+    zIndex: 40,
+  };
+
+  const heroStyle = {
+    maxWidth: 1200,
+    margin: '2rem auto',
+    padding: '1rem',
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gap: '1rem',
+  };
+
+  const packageGrid = {
+    maxWidth: 1200,
+    margin: '1rem auto 3rem',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: '1.25rem',
+    padding: '1rem',
+  };
+
+  const cardStyle = {
+    backgroundColor: '#fff',
+    borderRadius: '12px',
+    boxShadow: '0 10px 20px rgba(15,23,42,0.06)',
+    overflow: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+  };
+
+  const imgStyle = { width: '100%', height: 200, objectFit: 'cover' };
+  const cardBody = { padding: '1rem 1rem 1.25rem', flex: '1 0 auto' };
+  const bookBtn = {
+    backgroundColor: brand.primary,
+    color: brand.accent,
+    padding: '0.5rem 0.9rem',
+    border: 'none',
+    borderRadius: 8,
+    cursor: 'pointer',
+  };
+
+  return (
+    <div style={containerStyle}>
+      <header style={headerStyle}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, maxWidth: 1200, margin: '0 auto' }}>
+          <div style={{ width: 52, height: 52, borderRadius: 26, background: brand.primary, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'inset 0 -2px 0 rgba(0,0,0,0.06)'}}>
+            <span style={{ color: '#fff', fontWeight: 700 }}>MS</span>
+          </div>
+          <div>
+            <div style={{ fontWeight: 800, fontSize: 18 }}>Marwa Safaris Africa</div>
+            <div style={{ fontSize: 12, color: '#f3f4f6' }}>Authentic African journeys — Responsible, Luxurious, Memorable</div>
+          </div>
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: 10 }}>
+            <button style={{ background: 'transparent', color: '#fff', border: '1px solid rgba(255,255,255,0.18)', padding: '8px 12px', borderRadius: 8 }}>Packages</button>
+            <button style={{ background: 'transparent', color: '#fff', border: '1px solid rgba(255,255,255,0.18)', padding: '8px 12px', borderRadius: 8 }}>Contact</button>
+            <button style={{ background: '#fff', color: brand.primary, padding: '8px 12px', borderRadius: 8, fontWeight: 700 }}>Book Now</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section style={heroStyle}>
+          <div style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: '1fr 420px', gap: '1rem', alignItems: 'center' }}>
+            <div>
+              <h2 style={{ fontSize: 36, margin: 0, color: brand.primary }}>Explore Africa with Marwa Safaris</h2>
+              <p style={{ color: '#374151', marginTop: 12, fontSize: 16 }}>
+                Tailor-made safaris, expert guides, responsible tourism and unforgettable experiences across East, West and Southern Africa. From gorilla trekking to luxury lodges and beach escapes — we craft journeys that last a lifetime.
+              </p>
+
+              <div style={{ marginTop: 18, display: 'flex', gap: 12 }}>
+                <a href="#packages" style={{ ...bookBtn, textDecoration: 'none', display: 'inline-block' }}>View Packages</a>
+                <a href="#contact" style={{ border: `1px solid ${brand.primary}`, color: brand.primary, padding: '0.5rem 0.9rem', borderRadius: 8, textDecoration: 'none', display: 'inline-block' }}>Request Quote</a>
+              </div>
+
+              <div style={{ marginTop: 20, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, color: brand.muted }}>
+                <div>
+                  <strong>24/7 Support</strong>
+                  <div style={{ fontSize: 13 }}>Local guides & emergency response</div>
+                </div>
+                <div>
+                  <strong>Responsible Travel</strong>
+                  <div style={{ fontSize: 13 }}>Community & conservation contributions</div>
+                </div>
+                <div>
+                  <strong>Custom Itineraries</strong>
+                  <div style={{ fontSize: 13 }}>Family, honeymoon, luxury & budget options</div>
+                </div>
+                <div>
+                  <strong>Secure Bookings</strong>
+                  <div style={{ fontSize: 13 }}>Payments & travel insurance assistance</div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ borderRadius: 12, overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.12)' }}>
+              <img alt="Safari" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=60" style={{ width: '100%', height: 360, objectFit: 'cover' }} />
+            </div>
+          </div>
+        </section>
+
+        <section id="packages" style={{ padding: '0 1rem' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+            <h3 style={{ fontSize: 22, marginBottom: 12 }}>Popular Packages</h3>
+
+            <div style={packageGrid}>
+              {packages.map((p, idx) => (
+                <article key={idx} style={cardStyle}>
+                  <img src={p.img} alt={p.title} style={imgStyle} />
+                  <div style={cardBody}>
+                    <h4 style={{ fontSize: 18, margin: '0 0 6px' }}>{p.title}</h4>
+                    <p style={{ color: '#6b7280', fontSize: 14, marginBottom: 10 }}>{p.desc}</p>
+
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
+                      <div style={{ fontWeight: 700 }}>{/* price placeholder */}USD 1,800</div>
+                      <div>
+                        <button onClick={() => alert(`${p.title} added to booking cart (placeholder)`)} style={bookBtn}>Book</button>
+                        <button onClick={() => alert('Open quick view / full itinerary (placeholder)')} style={{ marginLeft: 8, padding: '0.45rem 0.8rem', borderRadius: 8, border: '1px solid #e5e7eb', background: 'transparent', cursor: 'pointer' }}>View</button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="about" style={{ maxWidth: 1200, margin: '2rem auto', padding: '0 1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: 20, alignItems: 'center' }}>
+            <div>
+              <h3 style={{ fontSize: 20 }}>About Marwa Safaris Africa</h3>
+              <p style={{ color: '#6b7280' }}>
+                We are a locally-run travel company with deep knowledge of East, Central and Southern Africa. Our team of experienced guides, conservation experts and travel planners crafts responsible itineraries that support communities and protect wildlife.
+              </p>
+
+              <ul style={{ marginTop: 12, color: '#6b7280' }}>
+                <li>Local offices & operators across Africa</li>
+                <li>ISO-level safety & vetted vehicle fleets</li>
+                <li>Custom groups, corporate travel & educational tours</li>
+              </ul>
+            </div>
+
+            <div style={{ borderRadius: 12, overflow: 'hidden' }}>
+              <img src="https://images.unsplash.com/photo-1455763916899-e8b50eca9967?auto=format&fit=crop&w=1200&q=60" alt="Guides" style={{ width: '100%', height: 260, objectFit: 'cover' }} />
+            </div>
+          </div>
+        </section>
+
+        <section style={{ maxWidth: 1200, margin: '2rem auto', padding: '0 1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+            <div>
+              <h4 style={{ fontSize: 18 }}>Traveler Stories</h4>
+              <blockquote style={{ marginTop: 12, padding: 12, background: '#f8fafc', borderRadius: 8 }}>
+                "Our family trip to the Mara was magical. The guides were superb and our kids are still talking about it." — Sara, UK
+              </blockquote>
+              <blockquote style={{ marginTop: 12, padding: 12, background: '#f8fafc', borderRadius: 8 }}>
+                "Gorilla trekking was life-changing. The care taken by the team meant we felt safe and respectful." — Daniel, Kenya
+              </blockquote>
+            </div>
+
+            <div>
+              <h4 style={{ fontSize: 18 }}>FAQ</h4>
+              <div style={{ marginTop: 12 }}>
+                <details style={{ marginTop: 8 }}>
+                  <summary style={{ cursor: 'pointer' }}>What is included in most packages?</summary>
+                  <p style={{ marginTop: 6, color: '#6b7280' }}>Accommodation, park fees (if specified), most meals, guiding & transfers. Flights and travel insurance are usually not included unless noted.</p>
+                </details>
+                <details style={{ marginTop: 8 }}>
+                  <summary style={{ cursor: 'pointer' }}>Do you arrange travel visas?</summary>
+                  <p style={{ marginTop: 6, color: '#6b7280' }}>We can advise and assist with visa letters but do not issue visas ourselves. Some permits (eg gorilla permits) are handled directly through our bookings team.</p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <footer style={{ backgroundColor: brand.primary, color: '#fff', padding: '1.25rem 0', marginTop: 32 }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ fontSize: 13 }}>© {new Date().getFullYear()} Marwa Safaris Africa — All rights reserved</div>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <a href="#privacy" style={{ color: '#fff', textDecoration: 'none' }}>Privacy</a>
+            <a href="#terms" style={{ color: '#fff', textDecoration: 'none' }}>Terms</a>
+            <a href="#careers" style={{ color: '#fff', textDecoration: 'none' }}>Careers</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+const container = document.getElementById('root');
+if (container) {
+  const root = createRoot(container);
+  root.render(<MarwaSafarisPreview />);
+}
+
+export default MarwaSafarisPreview;
